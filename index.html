@@ -10,21 +10,51 @@
 	<div class="container">
 	<div class="output_container">
 	<h2>Css Weather Forecast <i class="wi wi-sunset"></i></h2>
-	<ul>
-		<li class="lisbon"><p>Lisbon</p><p>21<sup>o</sup>C <span><i class="wi wi-day-sunny"></i></span></p></li>
+	<button class="btn" data-filter="rainy">rainy weather</button>
+	<button class="btn" data-filter="cloudy">cloudy weather</button>
+	<button class="btn" data-filter="sunny">sunny</button>
+	<button id="reset">show all</button>
+	<ul class="grid">
+		<li class="lisbon sunny"><p>Lisbon</p><p>21<sup>o</sup>C <span><i class="wi wi-day-sunny"></i></span></p></li>
 		<li class="paris"><p>Paris</p><p>11<sup>o</sup>C <span><i class="wi wi-day-hail"></i></span></p></li>
-		<li class="belgrade"><p>Belgrade</p><p>15<sup>o</sup>C <span><i class="wi wi-day-cloudy"></i></span></p></li></li>
-		<li class="kharkov"><p>Kharkov</p><p>21<sup>o</sup>C <span><i class="wi wi-day-cloudy-high"></i></span></p></li></li>
-		<li class="tel_aviv"><p>Tel Aviv</p><p>32<sup>o</sup>C <span><i class="wi wi-hot"></i></span></p></li></li>
-		<li class="cair"><p>Cair</p><p>21<sup>o</sup>C <span><i class="wi wi-day-sunny"></i></span></p></li></li>
-		<li class="new_york"><p>New York</p><p>17<sup>o</sup>C <span><i class="wi wi-day-sleet-storm"></i></span></p></li></li>
-		<li class="new_delhi"><p>New Delhi</p><p>17<sup>o</sup>C <span><i class="wi wi-rain"></i></span></p></li></li>
-		<li class="san_fran"><p>San Francisco</p><p>15<sup>o</sup>C <span><i class="wi wi-day-cloudy"></i></span></p></li></li>
-		<li class="tokyo"><p>Tokyo</p><p>8<sup>o</sup>C <span><i class="wi wi-night-clear"></i></span></p></li></li>
-		<li class="sydney"><p>Sydney</p><p>25<sup>o</sup>C <span><i class="wi wi-night-cloudy"></i></span></p></li></li>
+		<li class="belgrade cloudy"><p>Belgrade</p><p>15<sup>o</sup>C <span><i class="wi wi-day-cloudy"></i></span></p></li>
+		<li class="kharkov cloudy"><p>Kharkov</p><p>21<sup>o</sup>C <span><i class="wi wi-day-cloudy-high"></i></span></p></li>
+		<li class="tel_aviv sunny"><p>Tel Aviv</p><p>32<sup>o</sup>C <span><i class="wi wi-hot"></i></span></p></li>
+		<li class="cair sunny"><p>Cair</p><p>21<sup>o</sup>C <span><i class="wi wi-day-sunny"></i></span></p></li>
+		<li class="new_york cloudy"><p>New York</p><p>17<sup>o</sup>C <span><i class="wi wi-day-sleet-storm"></i></span></p></li>
+		<li class="new_delhi rainy"><p>New Delhi</p><p>17<sup>o</sup>C <span><i class="wi wi-rain"></i></span></p></li>
+		<li class="san_fran cloudy"><p>San Francisco</p><p>15<sup>o</sup>C <span><i class="wi wi-day-cloudy"></i></span></p></li>
+		<li class="tokyo"><p>Tokyo</p><p>8<sup>o</sup>C <span><i class="wi wi-night-clear"></i></span></p></li>
+		<li class="sydney cloudy"><p>Sydney</p><p>25<sup>o</sup>C <span><i class="wi wi-night-cloudy"></i></span></p></li>
 	</ul>
 	<p>Have a nice day and don't forget umbrella if you are in New Delhi now!</p>
 	</div>
 	</div>
+	<script
+  		src="https://code.jquery.com/jquery-3.2.1.min.js"
+ 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+  		crossorigin="anonymous"></script>
+	<script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+	<script src="js/scripts.js"></script>
+	<script>
+		$('.btn').on('click' ,function(e){
+			e.preventDefault();
+			var filtered = $(this).data('filter');
+			$('.grid').isotope({
+  				filter: $('.'+filtered)
+			});
+		});
+		$('#reset').on('click' ,function(e){
+			e.preventDefault();
+			$('.grid').isotope({
+				filter: '*',
+				sortBy: 'sunny'
+			})
+		});
+		// $('.grid').isotope({
+  		
+		// });
+	</script>
+
 </body>
 </html>
